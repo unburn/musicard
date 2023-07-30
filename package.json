@@ -1,0 +1,34 @@
+{
+  "name": "musicard.js",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "scripts": {
+    "test": "node example/test"
+  },
+  "files": [
+    "build"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "keywords": [
+    "music-card",
+    "discord-music-card",
+    "music-card-discord"
+  ],
+  "author": "FlameFace",
+  "license": "MIT",
+  "description": "Your Discord Bot's Music Made Visual!",
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "canvas-constructor": "^7.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/A3PIRE/musicard.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/A3PIRE/musicard.js/issues"
+  }
+}
