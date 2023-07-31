@@ -1,4 +1,4 @@
-declare module 'musicard.js' {
+declare module 'musicard' {
     interface MusicCardOptions {
         name: string;
         author: string;
