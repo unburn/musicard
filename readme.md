@@ -1,4 +1,4 @@
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard.js/main/asset/musicard.jpg)
+![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/musicard.jpg)
 # About
 **Musicard** is a lightweight and futuristic music card library designed for Discord bots.
 
@@ -34,13 +34,13 @@ musicCard({
 })
 ```
 **Output** : musicCard.png
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard.js/main/asset/example.png)
+![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example.png)
 **Mode**: pause
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard.js/main/asset/example-pause.png)
+![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example-pause.png)
 **Progress**: 90
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard.js/main/asset/example-progress.png)
+![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example-progress.png)
 **Color**: ea00ff (purple)
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard.js/main/asset/example-color.png)
+![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example-color.png)
 **And many more....**
 # Projects
 We will create projects soon, but if you want your project here using **Musicard**, join our [Discord](https://discord.gg/TvjrWtEuyP) server and contact us.
