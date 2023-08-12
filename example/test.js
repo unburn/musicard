@@ -1,17 +1,19 @@
 const { musicCard } = require("../build/index");
 const fs = require("fs");
 
-musicCard({
-    name: "Faded",
-    author: "By Alan Walker",
-    color: "ea00ff", // remove # from hex code
-    thumbnail: "https://raw.githubusercontent.com/A3PIRE/musicard/main/asset/thumbnail-preview.jpg",
-    progress: 90, // 0 - 100
-    starttime: "0:00",
-    endtime: "3:00",
-    mode: "pause"
-}).then((buffer) => {
-    // Generate a card and save it to a file
-    fs.writeFileSync("musicCard.png", buffer)
-    console.log("Your music card has been generated!")
-})
+// Create a new music card
+const card = new musicCard()
+    .setName("Faded")
+    .setAuthor("By Alan Walker")
+    .setColor("03cdff")
+    .setThumbnail("https://th.bing.com/th/id/OIP.WcM-Snz7PSuKGlrUqzsENgHaHa?pid=ImgDet&rs=1")
+    .setProgress(60)
+    .setStartTime("0:00")
+    .setEndTime("3:00")
+    .setMode("play")
+
+// Build the card
+const cardBuffer = card.build();
+
+// Write the card to a file
+fs.writeFileSync("musicCard.png", cardBuffer);

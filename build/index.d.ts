@@ -1,16 +1,18 @@
 declare module 'musicard' {
-    interface MusicCardOptions {
-        name: string;
-        author: string;
-        progress?: number;
-        thumbnail?: string;
-        color?: string;
-        starttime?: string;
-        endtime?: string;
-        mode?: 'play' | 'pause';
+    class musicCard {
+        constructor();
+
+        setName(name: string): this;
+        setAuthor(author: string): this;
+        setColor(color: string): this;
+        setThumbnail(thumbnail: string): this;
+        setProgress(progress: number): this;
+        setStartTime(starttime: string): this;
+        setEndTime(endtime: string): this;
+        setMode(mode: string): this;
+
+        build(): Promise<Buffer>;
     }
 
-    type MusicCardImage = Buffer;
-
-    export function musicCard(options: MusicCardOptions): Promise<MusicCardImage>;
+    export { musicCard };
 }
