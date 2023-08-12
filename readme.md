@@ -15,23 +15,28 @@ npm install musicard
 # Example
 This example code will generate a music card image and save it.
 ```js
-const { musicCard } = require("musicard");
-const fs = require("fs");
+(async () => {
+    const { musicCard } = require("../build/index");
+    const fs = require("fs");
 
-musicCard({
-    name: "Faded",
-    author: "Alan Walker",
-    color: "00fe9b", // remove # from hex code
-    thumbnail: "https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/thumbnail-preview.jpg",
-    progress: 50,
-    starttime: "0:00",
-    endtime: "3:00",
-    mode: "play" // or pause
-}).then((buffer) => {
-    // Generate a card and save it to a file
-    fs.writeFileSync("musicCard.png", buffer)
-    console.log("Your music card has been generated!")
-})
+    // Create a new music card
+    const card = new musicCard()
+        .setName("Faded")
+        .setAuthor("By Alan Walker")
+        .setColor("03cdff")
+        .setThumbnail("https://th.bing.com/th/id/OIP.WcM-Snz7PSuKGlrUqzsENgHaHa?pid=ImgDet&rs=1")
+        .setProgress(0)
+        .setStartTime("0:00")
+        .setEndTime("3:00")
+        .setMode("play")
+
+    // Build the card
+    const cardBuffer = await card.build();
+
+    // Write the card to a file
+    fs.writeFileSync("musicCard.png", cardBuffer);
+    console.log("Done!");
+})()
 ```
 **Output** : musicCard.png
 ![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example.png)
