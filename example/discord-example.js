@@ -12,7 +12,6 @@ const client = new Client({
     ]
 });
 
-<<<<<<< HEAD
 const nodes = [
     {
         host: "localhost",
@@ -21,14 +20,6 @@ const nodes = [
         secure: false
     }
 ]
-=======
-const nodes = [{
-    host: "",
-    password: "",
-    port: 80,
-    secure: false
-}];
->>>>>>> 0a44d411cec3c5d89499e14a167736e22b4961bc
 
 client.manager = new Manager({
     nodes,
@@ -137,7 +128,6 @@ client.manager.on("trackStart", async (player, track) => {
     const musicLength = track.duration;
     const formattedLength = formatTime(Math.round(musicLength / 1000));
 
-<<<<<<< HEAD
     const card = new musicCard()
         .setName(track.title)
         .setAuthor(track.author)
@@ -158,22 +148,6 @@ client.manager.on("trackStart", async (player, track) => {
 
     await channel.send({
         embeds: [embed],
-=======
-    const buffer = await musicCard({
-        name: track.title,
-        author: track.author,
-        color: "00fe9b", // remove # from hex code
-        thumbnail: track.displayThumbnail("mqdefault"),
-        progress: 0,
-        starttime: "0:00",
-        endtime: `${formattedLength}`,
-        mode: "play"
-    })
-
-    const attachment = new AttachmentBuilder(buffer, "musicCard.png");
-
-    channel.send({
->>>>>>> 0a44d411cec3c5d89499e14a167736e22b4961bc
         files: [attachment]
     })
 });
@@ -184,8 +158,4 @@ client.manager.on("queueEnd", player => {
     player.destroy();
 });
 
-<<<<<<< HEAD
 client.login("TOKEN")
-=======
-client.login("TOKEN")
->>>>>>> 0a44d411cec3c5d89499e14a167736e22b4961bc
