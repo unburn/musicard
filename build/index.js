@@ -86,7 +86,7 @@ class musicCard {
 
         const progressBarCanvas = canvas.createCanvas(670, 25);
         const progressBarCtx = progressBarCanvas.getContext('2d');
-        const cornerRadius = 5;
+        const cornerRadius = 10;
         progressBarCtx.beginPath();
         progressBarCtx.moveTo(cornerRadius, 0);
         progressBarCtx.lineTo(670 - cornerRadius, 0);
@@ -200,7 +200,7 @@ class musicCard {
         const image = new Canvas(1280, 450)
             .setColor(`#${validatedColor}`)
             .printImage(img, 0, 0, 1280, 450)
-            .setTextFont('100px momcakebold')
+            .setTextFont('80px momcakebold')
             .printText(`${this.name}`, 70, 120)
 
             .setColor('#fff')
@@ -215,12 +215,12 @@ class musicCard {
             .setTextFont('35px momcakebold')
             .printText(`${validatedEndTime}`, 675, 410)
 
-            .printImage(thumbnailCanvas, 841, 8, 435, 435)
+            .printImage(thumbnailCanvas, 837, 8, 435, 435)
 
             .printImage(modeimage, 0, 0, 1280, 450)
 
             .printImage(progressBarCanvas, 70, 340, 670, 25)
-            .printImage(circleCanvas, 15, 255, 1000, 1000)
+            .printImage(circleCanvas, 10, 255, 1000, 1000)
 
             .toBuffer();
 
