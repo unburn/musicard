@@ -5,7 +5,9 @@
 - Fully Customizable
 - Lightweight
 - High Quality Assets
-
+- Auto Color Detection (from thumbnail)
+- Brightness Control
+- Live Progress Bar Change
 
 # Installation
 ```
@@ -16,15 +18,17 @@ npm install musicard
 This example code will generate a music card image and save it.
 ```js
 (async () => {
-    const { musicCard } = require("../build/index");
+const { musicCard } = require("musicard");
     const fs = require("fs");
 
     // Create a new music card
     const card = new musicCard()
-        .setName("Faded")
-        .setAuthor("By Alan Walker")
-        .setColor("03cdff")
-        .setThumbnail("https://th.bing.com/th/id/OIP.WcM-Snz7PSuKGlrUqzsENgHaHa?pid=ImgDet&rs=1")
+        .setName("Makeba (Ian Asher Remix)")
+        .setAuthor("By Ian Asher")
+        .setColor("auto") // (auto: dominant color from thumbnail)
+        //.setColor("#ff0000") // (hex color)
+        .setBrightness(50)
+        .setThumbnail("https://th.bing.com/th/id/OIP.TReQbbMLSu6fwHvqxIUS0gHaHa?pid=ImgDet&rs=1")
         .setProgress(0)
         .setStartTime("0:00")
         .setEndTime("3:00")
@@ -39,14 +43,7 @@ This example code will generate a music card image and save it.
 })()
 ```
 **Output** : musicCard.png
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example.png)
-**Mode**: pause
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example-pause.png)
-**Progress**: 90
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example-progress.png)
-**Color**: ea00ff (purple)
-![enter image description here](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example-color.png)
-**And many more....**
+![output](https://raw.githubusercontent.com/A3PIRE/musicard/main/assets/example.png)
+
 # Projects
 We will create projects soon, but if you want your project here using **Musicard**, join our [Discord](https://discord.gg/TvjrWtEuyP) server and contact us.
-

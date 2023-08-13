@@ -49,41 +49,6 @@ client.on("messageCreate", async message => {
 
     const [command, ...args] = message.content.slice(1).split(/\s+/g);
 
-    if (command === "nowplaying") {
-        const player = client.manager.players.get(message.guild.id);
-        if (!player) return message.reply("there is no player for this guild.");
-
-        console.log(player);
-        function formatTime(time) {
-            const minutes = Math.floor(time / 60);
-            const seconds = Math.floor(time % 60);
-            return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-        }
-
-        const musicLength = player.position;
-        const starttime = formatTime(Math.round(musicLength / 1000));
-        const endtime = formatTime(Math.round(player.queue.current.duration / 1000));
-
-        const position = (player.position * 100 / player.queue.current.duration).toFixed(1);
-
-        const buffer = await musicCard({
-            name: player.queue.current.title,
-            author: player.queue.current.author,
-            color: "00fe9b", // remove # from hex code
-            thumbnail: player.queue.current.displayThumbnail("mqdefault"),
-            progress: `${position}`,
-            starttime: `${starttime}`,
-            endtime: `${endtime}`,
-            mode: "play"
-        })
-
-        const attachment = new AttachmentBuilder(buffer, "musicCard.png");
-
-        return message.channel.send({
-            files: [attachment]
-        })
-    }
-
     if (command === "play") {
         if (!message.member.voice.channel) return message.reply("you need to join a voice channel.");
         if (!args.length) return message.reply("you need to give me a URL or a search term.");
@@ -131,8 +96,9 @@ client.manager.on("trackStart", async (player, track) => {
     const card = new musicCard()
         .setName(track.title)
         .setAuthor(track.author)
-        .setColor("03cdff")
-        .setThumbnail(await track.displayThumbnail("mqdefault"),)
+        .setColor("auto")
+        .setBrightness(50)
+        .setThumbnail(await track.displayThumbnail("mqdefault"))
         .setProgress(0)
         .setStartTime("0:00")
         .setEndTime(formattedLength)

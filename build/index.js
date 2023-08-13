@@ -1,12 +1,14 @@
 const { Canvas } = require('canvas-constructor/cairo');
 const canvas = require('canvas');
-canvas.registerFont('node_modules/musicard/res/momcakebold.ttf', { family: 'momcakebold' });
+canvas.registerFont('res/momcakebold.ttf', { family: 'momcakebold' });
+const { getColorFromURL } = require('color-thief-node');
 
 class musicCard {
     constructor() {
         this.name = null;
         this.author = null;
         this.color = null;
+        this.brightness = null;
         this.thumbnail = null;
         this.progress = null;
         this.starttime = null;
@@ -26,6 +28,11 @@ class musicCard {
 
     setColor(color) {
         this.color = color;
+        return this;
+    }
+
+    setBrightness(brightness) {
+        this.brightness = brightness;
         return this;
     }
 
@@ -54,6 +61,27 @@ class musicCard {
         return this;
     }
 
+    async rgbToHex(r, g, b) {
+        const toHex = (value) => {
+            const hex = value.toString(16);
+            return hex.length === 1 ? '0' + hex : hex;
+        };
+
+        const hexR = toHex(r);
+        const hexG = toHex(g);
+        const hexB = toHex(b);
+
+        return `#${hexR}${hexG}${hexB}`;
+    }
+
+    async adjustBrightness(r, g, b, adjustment) {
+        const adjustedR = Math.max(0, Math.min(255, r + adjustment));
+        const adjustedG = Math.max(0, Math.min(255, g + adjustment));
+        const adjustedB = Math.max(0, Math.min(255, b + adjustment));
+
+        return [adjustedR, adjustedG, adjustedB];
+    }
+
     async build() {
         if (!this.name) { throw new Error('Missing name parameter'); }
         if (!this.author) { throw new Error('Missing author parameter'); }
@@ -68,20 +96,35 @@ class musicCard {
         }
 
         const thumbnailURL = this.thumbnail || 'https://avatars.githubusercontent.com/u/84311327?v=4';
-        const validatedColor = this.color || 'ff0000';
         const validatedStartTime = this.starttime || '0:00';
         const validatedEndTime = this.endtime || '0:00';
         const validatedMode = this.mode || 'play';
+        const validatedBrightness = parseInt(this.brightness) || 0;
+
+        let validatedColor = this.color || 'ff0000';
+
+        if (validatedColor === 'auto') {
+            const dominantColor = await getColorFromURL(thumbnailURL);
+
+            const red = dominantColor[0];
+            const green = dominantColor[1];
+            const blue = dominantColor[2];
+
+            const adjustedPalette = await this.adjustBrightness(red, green, blue, validatedBrightness);
+            const hexColor = await this.rgbToHex(...adjustedPalette);
+
+            validatedColor = hexColor.replace('#', '');
+        }
 
         if (validatedMode !== 'play' && validatedMode !== 'pause') throw new Error('Invalid mode parameter, must be play or pause');
 
         const progressBarWidth = (validatedProgress / 100) * 670;
         const circleX = progressBarWidth + 60;
 
-        let modeimage = await canvas.loadImage('node_modules/musicard/res/blank.png');
+        let modeimage = await canvas.loadImage('res/blank.png');
 
         if (validatedMode === 'pause') {
-            modeimage = await canvas.loadImage('node_modules/musicard/res/pause.png');
+            modeimage = await canvas.loadImage('res/pause.png');
         }
 
         const progressBarCanvas = canvas.createCanvas(670, 25);
@@ -130,7 +173,7 @@ class musicCard {
         circleCtx.fillStyle = `#${validatedColor}`;
         circleCtx.fill();
 
-        const img = await canvas.loadImage('node_modules/musicard/res/background.png');
+        const img = await canvas.loadImage('res/background.png');
 
         const thumbnailCanvas = canvas.createCanvas(564, 564);
         const thumbnailCtx = thumbnailCanvas.getContext('2d');
