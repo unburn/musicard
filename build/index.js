@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const { Canvas } = require('canvas-constructor/cairo');
 const canvas = require('canvas');
 canvas.registerFont('res/momcakebold.ttf', { family: 'momcakebold' });
@@ -13,7 +15,6 @@ class musicCard {
         this.progress = null;
         this.starttime = null;
         this.endtime = null;
-        this.mode = null;
     }
 
     setName(name) {
@@ -56,11 +57,6 @@ class musicCard {
         return this;
     }
 
-    setMode(mode) {
-        this.mode = mode;
-        return this;
-    }
-
     async rgbToHex(r, g, b) {
         const toHex = (value) => {
             const hex = value.toString(16);
@@ -95,37 +91,32 @@ class musicCard {
             validatedProgress = 2;
         }
 
-        const thumbnailURL = this.thumbnail || 'https://avatars.githubusercontent.com/u/84311327?v=4';
+        const thumbnailURL = this.thumbnail || "./res/noimage.jpg";
         const validatedStartTime = this.starttime || '0:00';
         const validatedEndTime = this.endtime || '0:00';
-        const validatedMode = this.mode || 'play';
         const validatedBrightness = parseInt(this.brightness) || 0;
 
         let validatedColor = this.color || 'ff0000';
 
         if (validatedColor === 'auto') {
-            const dominantColor = await getColorFromURL(thumbnailURL);
+            if (thumbnailURL.includes(".webp")) {
+                validatedColor = "ffffff";
+            } else {
+                const dominantColor = await getColorFromURL(thumbnailURL);
 
-            const red = dominantColor[0];
-            const green = dominantColor[1];
-            const blue = dominantColor[2];
+                const red = dominantColor[0];
+                const green = dominantColor[1];
+                const blue = dominantColor[2];
 
-            const adjustedPalette = await this.adjustBrightness(red, green, blue, validatedBrightness);
-            const hexColor = await this.rgbToHex(...adjustedPalette);
+                const adjustedPalette = await this.adjustBrightness(red, green, blue, validatedBrightness);
+                const hexColor = await this.rgbToHex(...adjustedPalette);
 
-            validatedColor = hexColor.replace('#', '');
+                validatedColor = hexColor.replace('#', '');
+            }
         }
-
-        if (validatedMode !== 'play' && validatedMode !== 'pause') throw new Error('Invalid mode parameter, must be play or pause');
 
         const progressBarWidth = (validatedProgress / 100) * 670;
         const circleX = progressBarWidth + 60;
-
-        let modeimage = await canvas.loadImage('res/blank.png');
-
-        if (validatedMode === 'pause') {
-            modeimage = await canvas.loadImage('res/pause.png');
-        }
 
         const progressBarCanvas = canvas.createCanvas(670, 25);
         const progressBarCtx = progressBarCanvas.getContext('2d');
@@ -182,9 +173,8 @@ class musicCard {
 
         try {
             thumbnailImage = await canvas.loadImage(thumbnailURL);
-        }
-        catch (error) {
-            thumbnailImage = await canvas.loadImage('https://avatars.githubusercontent.com/u/84311327?v=4');
+        } catch (error) {
+            thumbnailImage = await canvas.loadImage("./res/noimage.jpg");
         }
 
         const thumbnailSize = Math.min(thumbnailImage.width, thumbnailImage.height);
@@ -259,8 +249,6 @@ class musicCard {
             .printText(`${validatedEndTime}`, 675, 410)
 
             .printImage(thumbnailCanvas, 837, 8, 435, 435)
-
-            .printImage(modeimage, 0, 0, 1280, 450)
 
             .printImage(progressBarCanvas, 70, 340, 670, 25)
             .printImage(circleCanvas, 10, 255, 1000, 1000)

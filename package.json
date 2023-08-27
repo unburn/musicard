@@ -1,8 +1,9 @@
 {
   "name": "musicard",
-  "version": "1.3.0",
+  "version": "1.3.2",
+  "description": "Experience your Discord bot's music in a visual format.",
   "main": "build/index.js",
-  "typings": "build/index.d.ts",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "node example/test"
   },
@@ -10,21 +11,29 @@
     "build",
     "res"
   ],
-  "engines": {
-    "node": ">=16"
-  },
   "keywords": [
     "music-card",
     "discord-music-card",
-    "music-card-discord"
+    "music-card-discord",
+    "discord.js",
+    "spotify",
+    "youtube",
+    "image",
+    "node-canvas",
+    "canvas-constructor",
+    "discord",
+    "discord-canvas"
   ],
   "author": "FlameFace",
   "license": "MIT",
-  "description": "Experience your Discord bot's music in a visual format.",
   "dependencies": {
     "canvas": "^2.11.2",
     "canvas-constructor": "^7.0.1",
     "color-thief-node": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.5.0",
+    "typescript": "^5.1.6"
   },
   "repository": {
     "type": "git",

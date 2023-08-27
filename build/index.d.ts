@@ -9,7 +9,6 @@ declare module 'musicard' {
         setProgress(progress: number): this;
         setStartTime(starttime: string): this;
         setEndTime(endtime: string): this;
-        setMode(mode: string): this;
 
         build(): Promise<Buffer>;
     }

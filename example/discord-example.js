@@ -102,7 +102,6 @@ client.manager.on("trackStart", async (player, track) => {
         .setProgress(0)
         .setStartTime("0:00")
         .setEndTime(formattedLength)
-        .setMode("play")
 
     const buffer = await card.build();
 

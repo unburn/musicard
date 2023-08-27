@@ -12,7 +12,6 @@
         .setProgress(0)
         .setStartTime("0:00")
         .setEndTime("3:00")
-        .setMode("pause")
 
     // Build the card
     const cardBuffer = await card.build();

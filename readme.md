@@ -7,7 +7,6 @@
 - High Quality Assets
 - Auto Color Detection (from thumbnail)
 - Brightness Control
-- Live Progress Bar Change
 
 # Installation
 ```
@@ -25,14 +24,12 @@ const { musicCard } = require("musicard");
     const card = new musicCard()
         .setName("Makeba (Ian Asher Remix)")
         .setAuthor("By Ian Asher")
-        .setColor("auto") // (auto: dominant color from thumbnail)
-        //.setColor("#ff0000") // (hex color)
+        .setColor("auto") // or hex color without # (default: auto) (auto: dominant color from thumbnail)
         .setBrightness(50)
         .setThumbnail("https://th.bing.com/th/id/OIP.TReQbbMLSu6fwHvqxIUS0gHaHa?pid=ImgDet&rs=1")
         .setProgress(0)
         .setStartTime("0:00")
         .setEndTime("3:00")
-        .setMode("play")
 
     // Build the card
     const cardBuffer = await card.build();
