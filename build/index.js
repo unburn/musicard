@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const { Canvas } = require('canvas-constructor/cairo');
 const canvas = require('canvas');
-canvas.registerFont('res/momcakebold.ttf', { family: 'momcakebold' });
+canvas.registerFont('./res/momcakebold.ttf', { family: 'momcakebold' });
 const { getColorFromURL } = require('color-thief-node');
 
 class musicCard {
