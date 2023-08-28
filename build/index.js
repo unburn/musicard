@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const { Canvas } = require('canvas-constructor/cairo');
 const canvas = require('canvas');
-canvas.registerFont('res/momcakebold.ttf', { family: 'momcakebold' });
+canvas.registerFont('node_modules/musicard/res/momcakebold.ttf', { family: 'momcakebold' });
 const { getColorFromURL } = require('color-thief-node');
 
 class musicCard {
@@ -91,7 +91,7 @@ class musicCard {
             validatedProgress = 2;
         }
 
-        const thumbnailURL = this.thumbnail || "./res/noimage.jpg";
+        const thumbnailURL = this.thumbnail || "node_modules/musicard/res/noimage.jpg";
         const validatedStartTime = this.starttime || '0:00';
         const validatedEndTime = this.endtime || '0:00';
         const validatedBrightness = parseInt(this.brightness) || 0;
@@ -164,7 +164,7 @@ class musicCard {
         circleCtx.fillStyle = `#${validatedColor}`;
         circleCtx.fill();
 
-        const img = await canvas.loadImage('res/background.png');
+        const img = await canvas.loadImage('node_modules/musicard/res/background.png');
 
         const thumbnailCanvas = canvas.createCanvas(564, 564);
         const thumbnailCtx = thumbnailCanvas.getContext('2d');
@@ -174,7 +174,7 @@ class musicCard {
         try {
             thumbnailImage = await canvas.loadImage(thumbnailURL);
         } catch (error) {
-            thumbnailImage = await canvas.loadImage("./res/noimage.jpg");
+            thumbnailImage = await canvas.loadImage("node_modules/musicard/res/noimage.jpg");
         }
 
         const thumbnailSize = Math.min(thumbnailImage.width, thumbnailImage.height);
