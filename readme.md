@@ -30,12 +30,13 @@ const { musicCard } = require("musicard");
         .setProgress(0)
         .setStartTime("0:00")
         .setEndTime("3:00")
+        .setOutput("png")
 
     // Build the card
     const cardBuffer = await card.build();
 
     // Write the card to a file
-    fs.writeFileSync("musicCard.png", cardBuffer);
+    fs.writeFileSync(`musicCard.${card.output}`, cardBuffer);
     console.log("Done!");
 })()
 ```

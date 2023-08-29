@@ -1,9 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const { Canvas } = require('canvas-constructor/cairo');
-const canvas = require('canvas');
-canvas.registerFont('node_modules/musicard/res/momcakebold.ttf', { family: 'momcakebold' });
+const { Canvas } = require('canvas-constructor/napi-rs');
+const canvas = require("@napi-rs/canvas");
+const devmod = false;
+canvas.GlobalFonts.registerFromPath(`${devmod ? "" : "node_modules/musicard/"}res/momcakebold.ttf`, 'momcakebold');
 const { getColorFromURL } = require('color-thief-node');
+
+const UserAgent = require("user-agents");
+const userAgent = new UserAgent();
 
 class musicCard {
     constructor() {
@@ -15,6 +17,7 @@ class musicCard {
         this.progress = null;
         this.starttime = null;
         this.endtime = null;
+        this.output = null;
     }
 
     setName(name) {
@@ -57,6 +60,11 @@ class musicCard {
         return this;
     }
 
+    setOutput(output) {
+        this.output = output || 'png';
+        return this;
+    }
+
     async rgbToHex(r, g, b) {
         const toHex = (value) => {
             const hex = value.toString(16);
@@ -91,7 +99,7 @@ class musicCard {
             validatedProgress = 2;
         }
 
-        const thumbnailURL = this.thumbnail || "node_modules/musicard/res/noimage.jpg";
+        const thumbnailURL = this.thumbnail || `${devmod ? "" : "node_modules/musicard/"}res/noimage.jpg`;
         const validatedStartTime = this.starttime || '0:00';
         const validatedEndTime = this.endtime || '0:00';
         const validatedBrightness = parseInt(this.brightness) || 0;
@@ -99,20 +107,16 @@ class musicCard {
         let validatedColor = this.color || 'ff0000';
 
         if (validatedColor === 'auto') {
-            if (thumbnailURL.includes(".webp")) {
-                validatedColor = "ffffff";
-            } else {
-                const dominantColor = await getColorFromURL(thumbnailURL);
+            const dominantColor = await getColorFromURL(thumbnailURL);
 
-                const red = dominantColor[0];
-                const green = dominantColor[1];
-                const blue = dominantColor[2];
+            const red = dominantColor[0];
+            const green = dominantColor[1];
+            const blue = dominantColor[2];
 
-                const adjustedPalette = await this.adjustBrightness(red, green, blue, validatedBrightness);
-                const hexColor = await this.rgbToHex(...adjustedPalette);
+            const adjustedPalette = await this.adjustBrightness(red, green, blue, validatedBrightness);
+            const hexColor = await this.rgbToHex(...adjustedPalette);
 
-                validatedColor = hexColor.replace('#', '');
-            }
+            validatedColor = hexColor.replace('#', '');
         }
 
         const progressBarWidth = (validatedProgress / 100) * 670;
@@ -164,7 +168,7 @@ class musicCard {
         circleCtx.fillStyle = `#${validatedColor}`;
         circleCtx.fill();
 
-        const img = await canvas.loadImage('node_modules/musicard/res/background.png');
+        const img = await canvas.loadImage(`${devmod ? "" : "node_modules/musicard/"}res/background.png`);
 
         const thumbnailCanvas = canvas.createCanvas(564, 564);
         const thumbnailCtx = thumbnailCanvas.getContext('2d');
@@ -172,9 +176,16 @@ class musicCard {
         let thumbnailImage;
 
         try {
-            thumbnailImage = await canvas.loadImage(thumbnailURL);
+            thumbnailImage = await canvas.loadImage(thumbnailURL, {
+                requestOptions: {
+                    headers: {
+                        'User-Agent': userAgent.toString()
+                    }
+                }
+            });
         } catch (error) {
-            thumbnailImage = await canvas.loadImage("node_modules/musicard/res/noimage.jpg");
+            console.error(error);
+            thumbnailImage = await canvas.loadImage(`${devmod ? "" : "node_modules/musicard/"}res/noimage.jpg`);
         }
 
         const thumbnailSize = Math.min(thumbnailImage.width, thumbnailImage.height);
@@ -253,7 +264,10 @@ class musicCard {
             .printImage(progressBarCanvas, 70, 340, 670, 25)
             .printImage(circleCanvas, 10, 255, 1000, 1000)
 
-            .toBuffer();
+        if (this.output === 'webp') return image.webp();
+        else if (this.output === 'png') return image.png();
+        else if (this.output === 'jpg') return image.jpeg();
+
 
         return image;
     }
