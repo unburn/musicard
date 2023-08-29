@@ -1,12 +1,13 @@
+const devmod = false;
+
 const { Canvas } = require('canvas-constructor/napi-rs');
 const canvas = require("@napi-rs/canvas");
-const devmod = false;
-canvas.GlobalFonts.registerFromPath(`${devmod ? "" : "node_modules/musicard/"}res/momcakebold.ttf`, 'momcakebold');
 const { getColorFromURL } = require('color-thief-node');
 
-const UserAgent = require("user-agents");
-const userAgent = new UserAgent();
+// Register fonts
+canvas.GlobalFonts.registerFromPath(`${devmod ? "" : "node_modules/musicard/"}res/momcakebold.ttf`, 'momcakebold');
 
+// Create music card class
 class musicCard {
     constructor() {
         this.name = null;
@@ -17,7 +18,6 @@ class musicCard {
         this.progress = null;
         this.starttime = null;
         this.endtime = null;
-        this.output = null;
     }
 
     setName(name) {
@@ -57,11 +57,6 @@ class musicCard {
 
     setEndTime(endtime) {
         this.endtime = endtime;
-        return this;
-    }
-
-    setOutput(output) {
-        this.output = output || 'png';
         return this;
     }
 
@@ -107,16 +102,20 @@ class musicCard {
         let validatedColor = this.color || 'ff0000';
 
         if (validatedColor === 'auto') {
-            const dominantColor = await getColorFromURL(thumbnailURL);
+            try {
+                const dominantColor = await getColorFromURL(thumbnailURL);
 
-            const red = dominantColor[0];
-            const green = dominantColor[1];
-            const blue = dominantColor[2];
+                const red = dominantColor[0];
+                const green = dominantColor[1];
+                const blue = dominantColor[2];
 
-            const adjustedPalette = await this.adjustBrightness(red, green, blue, validatedBrightness);
-            const hexColor = await this.rgbToHex(...adjustedPalette);
+                const adjustedPalette = await this.adjustBrightness(red, green, blue, validatedBrightness);
+                const hexColor = await this.rgbToHex(...adjustedPalette);
 
-            validatedColor = hexColor.replace('#', '');
+                validatedColor = hexColor.replace('#', '');
+            } catch {
+                validatedColor = 'ff0000';
+            }
         }
 
         const progressBarWidth = (validatedProgress / 100) * 670;
@@ -179,12 +178,11 @@ class musicCard {
             thumbnailImage = await canvas.loadImage(thumbnailURL, {
                 requestOptions: {
                     headers: {
-                        'User-Agent': userAgent.toString()
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.62',
                     }
                 }
             });
-        } catch (error) {
-            console.error(error);
+        } catch {
             thumbnailImage = await canvas.loadImage(`${devmod ? "" : "node_modules/musicard/"}res/noimage.jpg`);
         }
 
@@ -262,14 +260,9 @@ class musicCard {
             .printImage(thumbnailCanvas, 837, 8, 435, 435)
 
             .printImage(progressBarCanvas, 70, 340, 670, 25)
-            .printImage(circleCanvas, 10, 255, 1000, 1000)
+            .printImage(circleCanvas, 10, 255, 1000, 1000);
 
-        if (this.output === 'webp') return image.webp();
-        else if (this.output === 'png') return image.png();
-        else if (this.output === 'jpg') return image.jpeg();
-
-
-        return image;
+        return image.pngAsync()
     }
 }
 
