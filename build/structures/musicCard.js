@@ -12,15 +12,15 @@ canvas.GlobalFonts.registerFromPath(`${devmod ? "" : "node_modules/musicard/"}re
 
 // Create music card class
 class musicCard {
-    constructor() {
-        this.name = null;
-        this.author = null;
-        this.color = null;
-        this.brightness = null;
-        this.thumbnail = null;
-        this.progress = null;
-        this.starttime = null;
-        this.endtime = null;
+    constructor(options) {
+        this.name = options?.name ?? null;
+        this.author = options?.author ?? null;
+        this.color = options?.color ?? null;
+        this.brightness = options?.brightness ?? null;
+        this.thumbnail = options?.thumbnail ?? null;
+        this.progress = options?.progress ?? null;
+        this.starttime = options?.start_time ?? null;
+        this.endtime = options?.end_time ?? null;
     }
 
     setName(name) {
