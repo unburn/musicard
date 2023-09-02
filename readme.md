@@ -7,6 +7,7 @@
 - High Quality Assets
 - Auto Color Detection (from thumbnail)
 - Brightness Control
+- Multiple Fonts Support
 
 # Installation
 ```
@@ -17,16 +18,16 @@ npm install musicard
 This example code will generate a music card image and save it.
 ```js
 (async () => {
-    const { musicCard } = require("../build/index");
+    const { musicCard } = require("musicard");
     const fs = require("fs");
 
     // Create a new music card
     const card = new musicCard()
-        .setName("Makeba (Ian Asher Remix)")
-        .setAuthor("By Ian Asher")
+        .setName("Paradise")
+        .setAuthor("By Alan Walker")
         .setColor("auto") // or hex color without # (default: auto) (auto: dominant color from thumbnail)
         .setBrightness(50)
-        .setThumbnail("https://indexmusic.it/wp-content/uploads/2023/07/jain-makeba-ian-asher-remix.jpg")
+        .setThumbnail("https://i0.wp.com/is4-ssl.mzstatic.com/image/thumb/Music115/v4/20/6a/38/206a382f-da9e-0a6c-81a7-8db2397b6438/886449597628.jpg/600x600bb-60.jpg")
         .setProgress(0)
         .setStartTime("0:00")
         .setEndTime("3:00")

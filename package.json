@@ -1,6 +1,6 @@
 {
   "name": "musicard",
-  "version": "1.3.5",
+  "version": "1.4.2",
   "description": "Experience your Discord bot's music in a visual format.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -28,7 +28,6 @@
   "license": "MIT",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
-    "canvas-constructor": "^7.0.1",
     "color-thief-node": "^1.0.4"
   },
   "devDependencies": {
