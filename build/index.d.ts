@@ -6,8 +6,8 @@ export declare class musicCard {
       brightness?: number;
       thumbnail?: string;
       progress?: number;
-      start_time?: string;
-      end_time?: string;
+      startTime?: string;
+      endTime?: string;
     });
 
     public setName(name: string): this;

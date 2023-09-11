@@ -19,8 +19,8 @@ class musicCard {
         this.brightness = options?.brightness ?? null;
         this.thumbnail = options?.thumbnail ?? null;
         this.progress = options?.progress ?? null;
-        this.starttime = options?.start_time ?? null;
-        this.endtime = options?.end_time ?? null;
+        this.starttime = options?.startTime ?? null;
+        this.endtime = options?.endTime ?? null;
     }
 
     setName(name) {
