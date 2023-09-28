@@ -1,5 +1,6 @@
 const canvas = require("@napi-rs/canvas");
 const { colorFetch } = require("../functions/colorFetch");
+const { isTimeFormat } = require("../functions/timeType");
 
 canvas.GlobalFonts.registerFromPath(`build/structures/font/circularstd-black.otf`, "circular-std");
 canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-jp-black.ttf`, "noto-sans-jp");
@@ -61,11 +62,17 @@ class musicCard {
     }
 
     setStartTime(starttime) {
+        if(!isTimeFormat(starttime)) {
+          throw new TypeError(`Expected a valid time format: 'min:seconds' (1:00) but got ${starttime} instead.`)
+        }
         this.starttime = starttime;
         return this;
     }
 
     setEndTime(endtime) {
+      if(!isTimeFormat(endtime)) {
+        throw new TypeError(`Expected a valid time format: 'min:seconds' (1:00) but got ${endtime} instead.`)
+      }
         this.endtime = endtime;
         return this;
     }
