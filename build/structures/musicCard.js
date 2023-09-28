@@ -14,16 +14,15 @@ canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-kr-black.ttf
 // canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notosans-kr-black.ttf`, "noto-sans-kr");
 
 class musicCard {
-    constructor() {
-        this.name = null;
-        this.author = null;
-        this.color = null;
-        this.theme = null;
-        this.brightness = null;
-        this.thumbnail = null;
-        this.progress = null;
-        this.starttime = null;
-        this.endtime = null;
+    constructor(options) {
+        this.name = options?.name ?? null;
+        this.author = options?.author ?? null;
+        this.color = options?.color ?? null;
+        this.brightness = options?.brightness ?? null;
+        this.thumbnail = options?.thumbnail ?? null;
+        this.progress = options?.progress ?? null;
+        this.starttime = options?.startTime ?? null;
+        this.endtime = options?.endTime ?? null;
     }
 
     setName(name) {

@@ -1,5 +1,14 @@
 export declare class musicCard {
-    constructor();
+    constructor(options?: {
+      name?: string;
+      author?: string;
+      color?: string;
+      brightness?: number;
+      thumbnail?: string;
+      progress?: number;
+      startTime?: string;
+      endTime?: string;
+    });
 
     public setName(name: string): this;
     public setAuthor(author: string): this;
