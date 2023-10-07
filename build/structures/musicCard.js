@@ -1,23 +1,24 @@
 const canvas = require("@napi-rs/canvas");
 const { colorFetch } = require("../functions/colorFetch");
 
-canvas.GlobalFonts.registerFromPath(`build/structures/font/circularstd-black.otf`, "circular-std");
-canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-jp-black.ttf`, "noto-sans-jp");
-canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-black.ttf`, "noto-sans");
-canvas.GlobalFonts.registerFromPath(`build/structures/font/notoemoji-bold.ttf`, "noto-emoji");
-canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-kr-black.ttf`, "noto-sans-kr");
+// canvas.GlobalFonts.registerFromPath(`build/structures/font/circularstd-black.otf`, "circular-std");
+// canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-jp-black.ttf`, "noto-sans-jp");
+// canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-black.ttf`, "noto-sans");
+// canvas.GlobalFonts.registerFromPath(`build/structures/font/notoemoji-bold.ttf`, "noto-emoji");
+// canvas.GlobalFonts.registerFromPath(`build/structures/font/notosans-kr-black.ttf`, "noto-sans-kr");
 
-// canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/circularstd-black.otf`, "circular-std");
-// canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notosans-jp-black.ttf`, "noto-sans-jp");
-// canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notosans-black.ttf`, "noto-sans");
-// canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notoemoji-bold.ttf`, "noto-emoji");
-// canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notosans-kr-black.ttf`, "noto-sans-kr");
+canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/circularstd-black.otf`, "circular-std");
+canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notosans-jp-black.ttf`, "noto-sans-jp");
+canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notosans-black.ttf`, "noto-sans");
+canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notoemoji-bold.ttf`, "noto-emoji");
+canvas.GlobalFonts.registerFromPath(`node_modules/musicard/build/structures/font/notosans-kr-black.ttf`, "noto-sans-kr");
 
 class musicCard {
     constructor(options) {
         this.name = options?.name ?? null;
         this.author = options?.author ?? null;
         this.color = options?.color ?? null;
+        this.theme = options?.theme ?? null;
         this.brightness = options?.brightness ?? null;
         this.thumbnail = options?.thumbnail ?? null;
         this.progress = options?.progress ?? null;
@@ -96,6 +97,9 @@ class musicCard {
             this.thumbnail
         );
 
+        if (this.name.length > 15) this.name = `${this.name.slice(0, 15)}...`;
+        if (this.author.length > 15) this.author = `${this.author.slice(0, 15)}...`;
+
         if (this.theme == 'classic') {
             const progressBarWidth = (validatedProgress / 100) * 670;
             const circleX = progressBarWidth + 60;
@@ -173,9 +177,6 @@ class musicCard {
             thumbnailCtx.clip();
 
             thumbnailCtx.drawImage(thumbnailImage, thumbnailX, thumbnailY, thumbnailSize, thumbnailSize, 0, 0, thumbnailCanvas.width, thumbnailCanvas.height);
-
-            if (this.name.length > 15) this.name = `${this.name.slice(0, 15)}...`;
-            if (this.author.length > 15) this.author = `${this.author.slice(0, 15)}...`;
 
             const image = canvas.createCanvas(1280, 450);
             const ctx = image.getContext('2d');

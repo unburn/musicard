@@ -18,6 +18,8 @@ async function colorFetch(color, brightness, thumbnail) {
         } catch {
             return '03fc7f';
         }
+    } else {
+        return color.replace('#', '');
     }
 }
 
