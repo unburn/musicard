@@ -33,12 +33,7 @@ This example code will generate a music card image and save it.
 
 # __Output__
 This is the **classic** output of musicard.
-![classic](https://s6.imgcdn.dev/ZDw99.png)
+![classic](https://www.reedroux.biz/mewwmecard1.png)
 
 This is the **dynamic** output of musicard.
-![dynamic](https://s6.imgcdn.dev/ZD6Jy.png)
-
-# Projects
-|  Sr.  |            Name            |  Platform  |
-|:-----:|:--------------------------:|:----------:|
-| **1** | [Riffy Music Bot (Official)](https://github.com/riffy-team/riffy-music-bot) | discord.js |
+![dynamic](https://www.reedroux.biz/mewwmecard1.png)
