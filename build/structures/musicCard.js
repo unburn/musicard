@@ -158,7 +158,7 @@ class musicCard {
                     }
                 }
             }).catch(() => {
-                thumbnailImage = canvas.loadImage(`https://s6.imgcdn.dev/Opo4a.jpg`);
+                thumbnailImage = canvas.loadImage(`https://www.reedroux.biz/mewwmecard1.png`);
             })
 
             const thumbnailSize = Math.min(thumbnailImage.width, thumbnailImage.height);
