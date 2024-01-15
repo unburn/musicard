@@ -1,6 +1,6 @@
 {
   "name": "musicard",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Experience your Discord bot's music in a visual format.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -36,9 +36,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/A3PIRE/musicard.git"
+    "url": "https://github.com/burnxpofficial/musicard.git"
   },
   "bugs": {
-    "url": "https://github.com/A3PIRE/musicard/issues"
+    "url": "https://github.com/burnxpofficial/musicard/issues"
+  },
+  "funding": {
+    "type": "githubsponser",
+    "url": "https://github.com/sponsors/flameface"
   }
 }
