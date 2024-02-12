@@ -1,44 +1,51 @@
-# __About__
+## Musicard (Beta)
+
+<a href="https://unburn.tech"><img style="width: 150px" src="https://ik.imagekit.io/unburn/unburn-badge-small.svg"/></a>
+
 **Musicard** is a futuristic music card library designed for Discord bots.
 
-# __Installation__
+## Installation
+
 ```
 npm install musicard
 ```
 
-# __Example__
-This example code will generate a music card image and save it.
+**Get API key from our site here https://unburn.tech**
+
+## Usage
+
 ```js
-(async () => {
-    const { musicCard } = require("musicard");
-    const fs = require("fs");
+const fs = require("fs")
+const { Musicard } = require("musicard");
 
-    const card = new musicCard()
-        .setName("Bad Habits")
-        .setAuthor("By Ed Sheeran")
-        .setColor("auto")
-        .setTheme("dynamic")
-        .setBrightness(50)
-        .setThumbnail("https://static.qobuz.com/images/covers/ga/ua/rmk2cpqliuaga_600.jpg")
-        .setProgress(10)
-        .setStartTime("0:00")
-        .setEndTime("3:00")
+const musicard = new Musicard("API_KEY");
 
-    const cardBuffer = await card.build();
+musicard.vibrant({
+    thumbnailImage: "https://lh3.googleusercontent.com/hOrOngQbjo0Lw-wuTTvyDTsT-TkrNEo3Ms88PMyGwEvHvnTrHWU0cKAbkFseCLs7IvLiJPv_7884X5hc-w=w544-h544-l90-rj",
+    progressColor: "#e92725",
+    progressBarColor: "#4f4f4f"
+    backgroundColor: "#000000",
+    menuColor: "#e92725",
+    progress: 10,
+    paused: false,
+}).then((data) => {
+    if (data.status !== 200) {
+        return console.log(data.message)
+    } else {
+        const base64Data = `${data.message}`.split(';base64,').pop();
+        const buffer = Buffer.from(base64Data, 'base64');
 
-    fs.writeFileSync(`musicard.png`, cardBuffer);
-    console.log("Done!");
-})()
+        fs.writeFile("vibrant.png", buffer, (err) => {
+            if (err) {
+                console.error('Error:', err);
+                return;
+            }
+            console.log('File has been created successfully!');
+        });
+    }
+})
 ```
 
-# __Output__
-This is the **classic** output of musicard.
-![classic](https://s6.imgcdn.dev/ZDw99.png)
+## Output
 
-This is the **dynamic** output of musicard.
-![dynamic](https://s6.imgcdn.dev/ZD6Jy.png)
-
-# Projects
-|  Sr.  |            Name            |  Platform  |
-|:-----:|:--------------------------:|:----------:|
-| **1** | [Riffy Music Bot (Official)](https://github.com/riffy-team/riffy-music-bot) | discord.js |
+<img style="width: 250px" src="https://ik.imagekit.io/unburn/vibrant.png?updatedAt=1707732494506"/>
