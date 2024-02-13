@@ -74,7 +74,8 @@ async function MiniPro({
             imagePath: thumbnailImage!,
             borderRadius: 20,
             width: 331,
-            height: 331
+            height: 331,
+            cropCenter: true
         }));
 
         ctx.drawImage(thumbnail, 87, 91);

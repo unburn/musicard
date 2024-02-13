@@ -74,7 +74,8 @@ async function Classic({
             imagePath: thumbnailImage!,
             borderRadius: 20,
             width: 837,
-            height: 837
+            height: 837,
+            cropCenter: true
         }));
 
         ctx.drawImage(thumbnail, 1621, 0);

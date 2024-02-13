@@ -47,7 +47,8 @@ function Mini({ thumbnailImage, backgroundColor, menuColor, progress, progressCo
                 imagePath: thumbnailImage,
                 borderRadius: 80,
                 width: 544,
-                height: 544
+                height: 544,
+                cropCenter: true
             }));
             ctx.drawImage(thumbnail, 34, 29);
             // ---------------------------------

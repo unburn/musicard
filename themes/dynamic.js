@@ -60,7 +60,8 @@ function Dynamic({ thumbnailImage, backgroundColor, progress, progressColor, pro
                 imagePath: thumbnailImage,
                 circle: true,
                 width: 400,
-                height: 400
+                height: 400,
+                cropCenter: true
             }));
             ctx.drawImage(thumbnail, 69, 61);
             // ---------------------------------

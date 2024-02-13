@@ -1,6 +1,6 @@
 {
   "name": "musicard",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Musicard is #1 canvas library of music cards.",
   "main": "index.js",
   "files": [
@@ -25,7 +25,7 @@
   "license": "GPL-3.0-only",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
-    "cropify": "^1.0.3"
+    "cropify": "^1.0.5"
   },
   "devDependencies": {
     "@types/node": "20.5.0",

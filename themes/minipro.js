@@ -64,7 +64,8 @@ function MiniPro({ thumbnailImage, backgroundColor, progress, progressColor, pro
                 imagePath: thumbnailImage,
                 borderRadius: 20,
                 width: 331,
-                height: 331
+                height: 331,
+                cropCenter: true
             }));
             ctx.drawImage(thumbnail, 87, 91);
             // ---------------------------------
