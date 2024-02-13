@@ -1,17 +1,14 @@
 {
   "name": "musicard",
-  "version": "1.5.3",
-  "description": "Experience your Discord bot's music in a visual format.",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
-  "scripts": {
-    "test": "node example/test"
-  },
+  "version": "2.0.0",
+  "description": "Musicard is #1 canvas library of music cards.",
+  "main": "index.js",
   "files": [
-    "build",
-    "res"
+    "fonts",
+    "themes"
   ],
   "keywords": [
+    "musicard",
     "music-card",
     "discord-music-card",
     "music-card-discord",
@@ -25,10 +22,10 @@
     "discord-canvas"
   ],
   "author": "FlameFace",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
-    "color-thief-node": "^1.0.4"
+    "cropify": "^1.0.3"
   },
   "devDependencies": {
     "@types/node": "20.5.0",
@@ -36,13 +33,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/burnxpofficial/musicard.git"
+    "url": "https://github.com/unburn/musicard.git"
   },
   "bugs": {
-    "url": "https://github.com/burnxpofficial/musicard/issues"
+    "url": "https://github.com/unburn/musicard/issues"
   },
   "funding": {
     "type": "githubsponser",
     "url": "https://github.com/sponsors/flameface"
-  }
+  },
+  "homepage": "https://github.com/unburn/musicard/wiki"
 }

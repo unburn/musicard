@@ -1,44 +1,19 @@
-# __About__
-**Musicard** is a futuristic music card library designed for Discord bots.
+# Musicard
+**Musicard** is a canvas library with awesome music cards and includes 4 themes (classic, dynamic, mini, and minipro).
 
-# __Installation__
+# Installation
 ```
 npm install musicard
 ```
 
-# __Example__
-This example code will generate a music card image and save it.
-```js
-(async () => {
-    const { musicCard } = require("musicard");
-    const fs = require("fs");
+# Documentations
+| [About](https://github.com/unburn/musicard/wiki) | [Usage](https://github.com/unburn/musicard/wiki/Usage) | [Theme](https://github.com/unburn/musicard/wiki/Themes) |
+| ------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------- |
 
-    const card = new musicCard()
-        .setName("Bad Habits")
-        .setAuthor("By Ed Sheeran")
-        .setColor("auto")
-        .setTheme("dynamic")
-        .setBrightness(50)
-        .setThumbnail("https://static.qobuz.com/images/covers/ga/ua/rmk2cpqliuaga_600.jpg")
-        .setProgress(10)
-        .setStartTime("0:00")
-        .setEndTime("3:00")
+# Community
+Join our Discord community for support.
 
-    const cardBuffer = await card.build();
+[![discord](https://ik.imagekit.io/unburn/tr:w-0.4/discord.png?updatedAt=1707810780860)](https://unburn.tech/discord)
 
-    fs.writeFileSync(`musicard.png`, cardBuffer);
-    console.log("Done!");
-})()
-```
-
-# __Output__
-This is the **classic** output of musicard.
-![classic](https://s6.imgcdn.dev/ZDw99.png)
-
-This is the **dynamic** output of musicard.
-![dynamic](https://s6.imgcdn.dev/ZD6Jy.png)
-
-# Projects
-|  Sr.  |            Name            |  Platform  |
-|:-----:|:--------------------------:|:----------:|
-| **1** | [Riffy Music Bot (Official)](https://github.com/riffy-team/riffy-music-bot) | discord.js |
+# Licenced
+Under [GPL](https://github.com/unburn/musicard/blob/main/LICENSE) Licence
