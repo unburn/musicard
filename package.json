@@ -1,11 +1,14 @@
 {
   "name": "musicard",
-  "version": "2.0.1",
-  "description": "Musicard is #1 canvas library of music cards.",
-  "main": "index.js",
+  "version": "2.0.2",
+  "description": "Musicard is one of the best canvas libraries to create a variety of music cards.",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "files": [
     "fonts",
-    "themes"
+    "themes",
+    "index.js",
+    "index.d.ts"
   ],
   "keywords": [
     "musicard",
@@ -26,10 +29,6 @@
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
     "cropify": "^1.0.5"
-  },
-  "devDependencies": {
-    "@types/node": "20.5.0",
-    "typescript": "^5.1.6"
   },
   "repository": {
     "type": "git",
