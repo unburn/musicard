@@ -3,7 +3,7 @@
 <p align="center">Musicard is one of the best canvas libraries to create a variety of music cards.</p>
 
 <p align="center">
-    <a href="https://github.com/unburn/musicard/wiki/"><b>Documentation</b></a> •
+    <a href="https://github.com/unburn/musicard/"><b>Documentation</b></a> •
     <a href="https://discord.gg/66uGX7t4ww"><b>Support</b></a>
 </p>
 
