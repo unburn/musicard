@@ -1,19 +1,23 @@
-<img src="https://ik.imagekit.io/unburn/Musicard.png?updatedAt=1708002748488" />
+<img src="https://ik.imagekit.io/unburn/Musicard.svg" />
 
 <p align="center">Musicard is one of the best canvas libraries to create a variety of music cards.</p>
 
 <p align="center">
-    <a href="https://github.com/unburn/musicard/wiki/"><b>Documentation</b></a> •
+    <a href="https://github.com/unburn/musicard/"><b>Github</b></a> •
     <a href="https://discord.gg/66uGX7t4ww"><b>Support</b></a>
 </p>
 
 <div align="center">
 
-[![NPM Version](https://img.shields.io/npm/v/musicard)](https://www.npmjs.com/package/musicard)
-[![NPM Downloads](https://img.shields.io/npm/dw/musicard)](https://www.npmjs.com/package/musicard)
-[![NPM License](https://img.shields.io/npm/l/musicard)](https://github.com/unburn/musicard/blob/main/LICENSE)
-[![GitHub Repo stars](https://img.shields.io/github/stars/unburn/musicard)](https://github.com/unburn/musicard)
+[![NPM Version](https://img.shields.io/npm/v/musicard?style=flat-square&color=%23FF7A00)](https://www.npmjs.com/package/musicard)
+[![NPM Downloads](https://img.shields.io/npm/dw/musicard?style=flat-square&color=%23FF7A00)](https://www.npmjs.com/package/musicard)
+[![NPM License](https://img.shields.io/npm/l/musicard?style=flat-square&color=%23FF7A00)](https://github.com/unburn/musicard/blob/main/LICENSE)
+[![GitHub Repo stars](https://img.shields.io/github/stars/unburn/musicard?style=flat-square&color=%23FF7A00)](https://github.com/unburn/musicard)
 
+</div>
+
+<div align="center">
+<a href="https://github.com/sponsors/flameface"><img src="https://ik.imagekit.io/unburn/SupportMusicard.svg"/></a>
 </div>
 
 # Installation
@@ -62,7 +66,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Classic
 
-![classic](https://ik.imagekit.io/unburn/Classic.png?updatedAt=1707999483727)
+![classic](https://ik.imagekit.io/unburn/Classic.svg)
 
 ```js
 (async () => {
@@ -92,7 +96,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Classic Pro
 
-![classicpro](https://ik.imagekit.io/unburn/ClassicPro.png?updatedAt=1707999483420)
+![classicpro](https://ik.imagekit.io/unburn/ClassicPro.svg)
 
 ```js
 (async () => {
@@ -122,7 +126,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Dynamic
 
-![dynamic](https://ik.imagekit.io/unburn/Dynamic.png?updatedAt=1707999789888)
+![dynamic](https://ik.imagekit.io/unburn/Dynamic.svg)
 
 ```js
 (async () => {
@@ -149,7 +153,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Mini
 
-![mini](https://ik.imagekit.io/unburn/Mini.png?updatedAt=1707999483700)
+![mini](https://ik.imagekit.io/unburn/Mini.svg)
 
 ```js
 (async () => {
@@ -174,7 +178,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Mini Pro
 
-![minipro](https://ik.imagekit.io/unburn/MiniPro.png?updatedAt=1707999483423)
+![minipro](https://ik.imagekit.io/unburn/MiniPro.svg)
 
 ```js
 (async () => {

@@ -16,22 +16,42 @@ async function Dynamic({
     if (!name) name = "Musicard"
     if (!author) author = "By Unburn"
 
-
     if (!progressBarColor) progressBarColor = "#5F2D00";
     if (!progressColor) progressColor = "#FF7A00";
     if (!backgroundColor) backgroundColor = "#070707"
     if (!nameColor) nameColor = "#FF7A00"
     if (!authorColor) authorColor = "#696969"
 
+    const noImageSvg = `<svg width="837" height="837" viewBox="0 0 837 837" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="837" height="837" fill="${progressColor}"/>
+    <path d="M419.324 635.912C406.035 635.912 394.658 631.18 385.195 621.717C375.732 612.254 371 600.878 371 587.589C371 574.3 375.732 562.923 385.195 553.46C394.658 543.997 406.035 539.265 419.324 539.265C432.613 539.265 443.989 543.997 453.452 553.46C462.915 562.923 467.647 574.3 467.647 587.589C467.647 600.878 462.915 612.254 453.452 621.717C443.989 631.18 432.613 635.912 419.324 635.912ZM371 490.941V201H467.647V490.941H371Z" fill="${backgroundColor}"/>
+    </svg>`
+
+    const noimageDataUrl = `data:image/svg+xml;base64,${Buffer.from(noImageSvg).toString('base64')}`;
+
     if (!thumbnailImage) {
-        const noImageSvg = `<svg width="837" height="837" viewBox="0 0 837 837" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M837 0H0V837H837V0ZM396.303 691.414C272.066 684.048 182.78 561.419 174.63 460.468C158.974 266.653 439.863 121.359 491.252 148.2C502.378 154.023 500.521 166.759 497.851 185.066C494.41 208.661 489.62 241.51 509.533 280.739C530.562 322.173 563.994 340.877 594.378 357.876C620.149 372.293 643.727 385.485 655.688 410.278C696.671 495.229 580.437 673.081 431.472 690.398C503.505 677.599 558.308 591.33 538.234 549.52C532.208 536.97 520.33 530.293 507.348 522.995C492.042 514.391 475.2 504.924 464.607 483.951C454.575 464.094 456.988 447.467 458.722 435.524C460.067 426.257 461.002 419.81 455.398 416.863C429.51 403.276 288.009 476.821 295.896 574.925C299.979 625.739 344.48 687.403 406.52 691.756C403.127 691.73 399.72 691.617 396.303 691.414Z" fill="${progressColor}"/>
-        </svg>`
-
-        const noimageDataUrl = `data:image/svg+xml;base64,${Buffer.from(noImageSvg).toString('base64')}`;
-
         thumbnailImage = noimageDataUrl
     };
+
+    let thumbnail;
+
+    try {
+        thumbnail = await loadImage(await cropImage({
+            imagePath: thumbnailImage,
+            circle: true,
+            width: 400,
+            height: 400,
+            cropCenter: true
+        }))
+    } catch {
+        thumbnail = await loadImage(await cropImage({
+            imagePath: noimageDataUrl,
+            circle: true,
+            width: 400,
+            height: 400,
+            cropCenter: true
+        }))
+    }
 
     if (progress < 10) {
         progress = 10
@@ -62,14 +82,6 @@ async function Dynamic({
 
         ctx.drawImage(background, 0, 0);
         // ---------------------------------
-        const thumbnail = await loadImage(await cropImage({
-            imagePath: thumbnailImage,
-            circle: true,
-            width: 400,
-            height: 400,
-            cropCenter: true
-        }));
-
         ctx.drawImage(thumbnail, 69, 61)
         // ---------------------------------
         ctx.beginPath();

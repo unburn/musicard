@@ -1,6 +1,6 @@
 {
   "name": "musicard",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Musicard is one of the best canvas libraries to create a variety of music cards.",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -27,8 +27,8 @@
   "author": "FlameFace",
   "license": "GPL-3.0-only",
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.44",
-    "cropify": "^1.0.5"
+    "@napi-rs/canvas": "^0.1.45",
+    "cropify": "^1.0.8"
   },
   "repository": {
     "type": "git",
@@ -36,10 +36,5 @@
   },
   "bugs": {
     "url": "https://github.com/unburn/musicard/issues"
-  },
-  "funding": {
-    "type": "githubsponser",
-    "url": "https://github.com/sponsors/flameface"
-  },
-  "homepage": "https://github.com/unburn/musicard/wiki"
+  }
 }
