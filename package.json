@@ -1,43 +1,59 @@
 {
-  "name": "musicard",
-  "version": "2.0.3",
-  "description": "Musicard is one of the best canvas libraries to create a variety of music cards.",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "files": [
-    "fonts",
-    "themes",
-    "index.js",
-    "index.d.ts"
-  ],
-  "scripts": {
-    "test": "node examples/index.js"
-  },
-  "keywords": [
-    "musicard",
-    "music-card",
-    "discord-music-card",
-    "music-card-discord",
-    "discord.js",
-    "spotify",
-    "youtube",
-    "image",
-    "node-canvas",
-    "canvas-constructor",
-    "discord",
-    "discord-canvas"
-  ],
-  "author": "FlameFace",
-  "license": "GPL-3.0-only",
-  "dependencies": {
-    "@napi-rs/canvas": "^0.1.45",
-    "cropify": "^1.0.8"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/unburn/musicard.git"
-  },
-  "bugs": {
-    "url": "https://github.com/unburn/musicard/issues"
-  }
+    "name": "musicard",
+    "version": "2.0.4-beta.0",
+    "description": "Musicard is one of the best canvas libraries to create a variety of music cards.",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "import": "./dist/index.mjs",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "dist",
+        "fonts"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "build:watch": "tsup --watch",
+        "deploy": "npm publish",
+        "deploy:beta": "npm publish --tag beta",
+        "test:m": "cd tests && node index.mjs",
+        "test:c": "cd tests && node --watch index.js"
+    },
+    "keywords": [
+        "musicard",
+        "music-card",
+        "discord-music-card",
+        "music-card-discord",
+        "discord.js",
+        "spotify",
+        "youtube",
+        "image",
+        "node-canvas",
+        "canvas-constructor",
+        "discord",
+        "discord-canvas"
+    ],
+    "author": "flameface",
+    "license": "GPL-3.0-only",
+    "devDependencies": {
+        "@types/node": "^20.11.28",
+        "tsup": "^8.0.2",
+        "typescript": "^5.4.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/unburn/musicard.git"
+    },
+    "bugs": {
+        "url": "https://github.com/unburn/musicard/issues"
+    },
+    "dependencies": {
+        "@napi-rs/canvas": "^0.1.51",
+        "cropify": "latest"
+    }
 }

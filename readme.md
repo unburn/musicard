@@ -34,15 +34,17 @@ You can use the Musicard package in your Discord bots, websites, etc.
 
 ## Using Create File
 ```js
-(async () => {
-    const { Classic } = require("musicard");
-    const fs = require("fs")
+import { Classic } from "musicard";
+import fs from 'fs'
 
-    const musicard = await Classic({ });
+//OR
 
-    // Creates PNG file
-    fs.writeFileSync("musicard.png", musicard);
-})()
+const { Classic } = require("musicard");
+const fs = require('fs')
+
+Classic({}).then(x => {
+    fs.writeFileSync("output.png", x)
+})
 ```
 
 ## Using Discord Bot
@@ -168,33 +170,6 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
         progressBarColor: "#5F2D00",
         menuColor: "#FF7A00",
         paused: false
-    });
-
-    fs.writeFileSync("musicard.png", musicard);
-})()
-```
-
-***
-
-## Mini Pro
-
-![minipro](https://ik.imagekit.io/unburn/MiniPro.svg)
-
-```js
-(async () => {
-    const { MiniPro } = require("musicard");
-    const fs = require("fs")
-
-    const musicard = await MiniPro({
-        thumbnailImage: "https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj",
-        backgroundColor: "#070707",
-        progress: 10,
-        progressColor: "#FF7A00",
-        progressBarColor: "#5F2D00",
-        name: "Burn",
-        nameColor: "#FF7A00",
-        author: "By 2WEI & Edda Hayes",
-        authorColor: "#696969"
     });
 
     fs.writeFileSync("musicard.png", musicard);
