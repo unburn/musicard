@@ -1,6 +1,6 @@
 {
     "name": "musicard",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "description": "Musicard is one of the best canvas libraries to create a variety of music cards.",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -22,7 +22,7 @@
         "deploy": "npm publish",
         "deploy:beta": "npm publish --tag beta",
         "test:m": "cd tests && node index.mjs",
-        "test:c": "cd tests && node --watch index.js"
+        "test:c": "cd tests && node index.js"
     },
     "keywords": [
         "musicard",
