@@ -12,8 +12,8 @@ export type ClassicOption = {
     authorColor?: string;
     startTime?: string;
     endTime?: string;
-    timeColor?: string
-}
+    timeColor?: string;
+};
 
 export type ClassicProOption = {
     thumbnailImage?: string;
@@ -30,7 +30,7 @@ export type ClassicProOption = {
     startTime?: string;
     endTime?: string;
     timeColor?: string;
-}
+};
 
 export type DynamicOption = {
     thumbnailImage?: string;
@@ -44,7 +44,7 @@ export type DynamicOption = {
     nameColor?: string;
     author?: string;
     authorColor?: string;
-}
+};
 
 export type MiniOption = {
     thumbnailImage: string;
@@ -56,4 +56,4 @@ export type MiniOption = {
     progressColor: string;
     progressBarColor: string;
     paused: boolean;
-}
+};

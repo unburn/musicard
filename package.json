@@ -2,9 +2,9 @@
     "name": "musicard",
     "version": "2.0.5",
     "description": "Musicard is one of the best canvas libraries to create a variety of music cards.",
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
     "exports": {
         ".": {
             "require": "./dist/index.js",
@@ -22,7 +22,11 @@
         "deploy": "npm publish",
         "deploy:beta": "npm publish --tag beta",
         "test:m": "cd tests && node index.mjs",
-        "test:c": "cd tests && node index.js"
+        "test:c": "cd tests && node index.js",
+        "lint": "eslint . --cache --ext .js,.jsx,.ts,.tsx",
+        "lint:fix": "eslint . --fix --cache --ext .js,.jsx,.ts,.tsx",
+        "format": "prettier --check .",
+        "format:fix": "prettier --write ."
     },
     "keywords": [
         "musicard",
@@ -41,9 +45,9 @@
     "author": "flameface",
     "license": "GPL-3.0-only",
     "devDependencies": {
-        "@types/node": "^20.11.28",
+        "@types/node": "^20.12.12",
         "tsup": "^8.0.2",
-        "typescript": "^5.4.2"
+        "typescript": "^5.4.5"
     },
     "repository": {
         "type": "git",
@@ -53,7 +57,7 @@
         "url": "https://github.com/unburn/musicard/issues"
     },
     "dependencies": {
-        "@napi-rs/canvas": "^0.1.51",
+        "@napi-rs/canvas": "^0.1.52",
         "cropify": "latest"
     }
 }
