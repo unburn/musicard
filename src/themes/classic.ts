@@ -105,6 +105,7 @@ const Classic = async (option: ClassicOption) => {
                 })
 
                 await cropImage({
+                    // @ts-ignore
                     imagePath: image,
                     x: 0,
                     y: -170,
@@ -116,6 +117,7 @@ const Classic = async (option: ClassicOption) => {
                 })
 
                 await cropImage({
+                    // @ts-ignore
                     imagePath: image,
                     x: 0,
                     y: -845,
