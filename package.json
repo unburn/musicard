@@ -22,11 +22,7 @@
         "deploy": "npm publish",
         "deploy:beta": "npm publish --tag beta",
         "test:m": "cd tests && node index.mjs",
-        "test:c": "cd tests && node index.js",
-        "lint": "eslint . --cache --ext .js,.jsx,.ts,.tsx",
-        "lint:fix": "eslint . --fix --cache --ext .js,.jsx,.ts,.tsx",
-        "format": "prettier --check .",
-        "format:fix": "prettier --write ."
+        "test:c": "cd tests && node index.js"
     },
     "keywords": [
         "musicard",

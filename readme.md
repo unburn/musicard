@@ -210,6 +210,30 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 })();
 ```
 
+---
+
+## Upcoming
+
+![Upcoming](https://ik.imagekit.io/unburn/Upcoming.svg)
+
+```js
+(async () => {
+    const { Upcoming } = require('musicard');
+    const fs = require('fs');
+
+    const musicard = await Upcoming({
+        thumbnailImage: 'https://img.youtube.com/vi/lmG0kY9FtRY/maxresdefault.jpg',
+        backgroundImage: fs.readFileSync('bg.png'),
+        imageDarkness: 70,
+        author: 'Testing by UG',
+        title: 'Bad Boy (feat. Luana Kiara)',
+        trackIndexBackgroundRadii: [10, 20, 30, 40, 50, 60, 70, 80, 80, 100],
+    });
+
+    fs.writeFileSync('musicard.png', musicard);
+})();
+```
+
 # Resource
 
 Pull request to add your project here.

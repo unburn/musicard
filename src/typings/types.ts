@@ -1,4 +1,4 @@
-import type { loadImage } from "@napi-rs/canvas";
+import type { loadImage } from '@napi-rs/canvas';
 
 export type ClassicOption = {
     thumbnailImage?: string;
@@ -14,8 +14,8 @@ export type ClassicOption = {
     authorColor?: string;
     startTime?: string;
     endTime?: string;
-    timeColor?: string
-}
+    timeColor?: string;
+};
 
 export type ClassicProOption = {
     thumbnailImage?: string;
@@ -32,7 +32,7 @@ export type ClassicProOption = {
     startTime?: string;
     endTime?: string;
     timeColor?: string;
-}
+};
 
 export type DynamicOption = {
     thumbnailImage?: string;
@@ -46,7 +46,7 @@ export type DynamicOption = {
     nameColor?: string;
     author?: string;
     authorColor?: string;
-}
+};
 
 export type MiniOption = {
     thumbnailImage: string;
@@ -58,7 +58,7 @@ export type MiniOption = {
     progressColor: string;
     progressBarColor: string;
     paused: boolean;
-}
+};
 
 export type UpcomingOptions = {
     /**
@@ -80,7 +80,7 @@ export type UpcomingOptions = {
     author: string;
 
     /**
-      * Color For the Track's Author
+     * Color For the Track's Author
      * @default #FFFFFF(White)
      */
     authorColor?: string;
@@ -88,7 +88,7 @@ export type UpcomingOptions = {
     /**
      * Thumbnail of the track (if none specified Default thumbnail will be displayed)
      */
-    thumbnailImage?: Parameters<typeof loadImage>[0]
+    thumbnailImage?: Parameters<typeof loadImage>[0];
 
     /**
      * Index of the track to be displayed
@@ -131,4 +131,4 @@ export type UpcomingOptions = {
      * Darkness for the background Image.
      */
     imageDarkness?: number;
-}
+};
