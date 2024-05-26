@@ -21,6 +21,7 @@
 </div>
 
 # Installation
+
 ```js
 // using npm
 npm install musicard
@@ -30,24 +31,27 @@ yarn add musicard
 ```
 
 # Usage
+
 You can use the Musicard package in your Discord bots, websites, etc.
 
 ## Using Create File
+
 ```js
-import { Classic } from "musicard";
-import fs from 'fs'
+import { Classic } from 'musicard';
+import fs from 'fs';
 
 //OR
 
-const { Classic } = require("musicard");
-const fs = require('fs')
+const { Classic } = require('musicard');
+const fs = require('fs');
 
 Classic({}).then(x => {
-    fs.writeFileSync("output.png", x)
-})
+    fs.writeFileSync('output.png', x);
+});
 ```
 
 ## Using Discord Bot
+
 ```js
 const { Classic } = require("musicard");
 const fs = require("fs")
@@ -64,27 +68,32 @@ return message.channel.send({
 ```
 
 ## Custom Background (New)
+
 Use a custom image background and also adjust the darkness of the image.
+
 ```js
-import { Classic } from "musicard";
-import fs from 'fs'
+import { Classic } from 'musicard';
+import fs from 'fs';
 
 Classic({
-    thumbnailImage: "https://cdn.discordapp.com/attachments/1220001571228880917/1220001571690123284/01.png?ex=660d5a01&is=65fae501&hm=a8cfb44844e61aa0fd01767cd363af048df28966c30d7b04a59f27fa45cf69c4&",
-    backgroundImage: "https://cdn.discordapp.com/attachments/1220001571228880917/1220001571690123284/01.png?ex=660d5a01&is=65fae501&hm=a8cfb44844e61aa0fd01767cd363af048df28966c30d7b04a59f27fa45cf69c4&",
+    thumbnailImage:
+        'https://cdn.discordapp.com/attachments/1220001571228880917/1220001571690123284/01.png?ex=660d5a01&is=65fae501&hm=a8cfb44844e61aa0fd01767cd363af048df28966c30d7b04a59f27fa45cf69c4&',
+    backgroundImage:
+        'https://cdn.discordapp.com/attachments/1220001571228880917/1220001571690123284/01.png?ex=660d5a01&is=65fae501&hm=a8cfb44844e61aa0fd01767cd363af048df28966c30d7b04a59f27fa45cf69c4&',
     imageDarkness: 60,
-    nameColor: "#DC92FF",
-    progressColor: "#DC92FF",
-    progressBarColor: "#2B2B2B",
-    progress: 50
+    nameColor: '#DC92FF',
+    progressColor: '#DC92FF',
+    progressBarColor: '#2B2B2B',
+    progress: 50,
 }).then(x => {
-    fs.writeFileSync("output.png", x)
-})
+    fs.writeFileSync('output.png', x);
+});
 ```
 
 ![custom](https://ik.imagekit.io/unburn/custom-output.png?updatedAt=1710995171966)
 
 # Themes
+
 Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Classic
@@ -93,29 +102,30 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ```js
 (async () => {
-    const { Classic } = require("musicard");
-    const fs = require("fs")
+    const { Classic } = require('musicard');
+    const fs = require('fs');
 
     const musicard = await Classic({
-        thumbnailImage: "https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj",
-        backgroundColor: "#070707",
+        thumbnailImage:
+            'https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj',
+        backgroundColor: '#070707',
         progress: 10,
-        progressColor: "#FF7A00",
-        progressBarColor: "#5F2D00",
-        name: "Burn",
-        nameColor: "#FF7A00",
-        author: "By 2WEI & Edda Hayes",
-        authorColor: "#696969",
-        startTime: "0:00",
-        endTime: "4:00",
-        timeColor: "#FF7A00"
+        progressColor: '#FF7A00',
+        progressBarColor: '#5F2D00',
+        name: 'Burn',
+        nameColor: '#FF7A00',
+        author: 'By 2WEI & Edda Hayes',
+        authorColor: '#696969',
+        startTime: '0:00',
+        endTime: '4:00',
+        timeColor: '#FF7A00',
     });
 
-    fs.writeFileSync("musicard.png", musicard);
-})()
+    fs.writeFileSync('musicard.png', musicard);
+})();
 ```
 
-***
+---
 
 ## Classic Pro
 
@@ -123,29 +133,30 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ```js
 (async () => {
-    const { ClassicPro } = require("musicard");
-    const fs = require("fs")
+    const { ClassicPro } = require('musicard');
+    const fs = require('fs');
 
     const musicard = await ClassicPro({
-        thumbnailImage: "https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj",
-        backgroundColor: "#070707",
+        thumbnailImage:
+            'https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj',
+        backgroundColor: '#070707',
         progress: 10,
-        progressColor: "#FF7A00",
-        progressBarColor: "#5F2D00",
-        name: "Burn",
-        nameColor: "#FF7A00",
-        author: "By 2WEI & Edda Hayes",
-        authorColor: "#696969",
-        startTime: "0:00",
-        endTime: "4:00",
-        timeColor: "#FF7A00"
+        progressColor: '#FF7A00',
+        progressBarColor: '#5F2D00',
+        name: 'Burn',
+        nameColor: '#FF7A00',
+        author: 'By 2WEI & Edda Hayes',
+        authorColor: '#696969',
+        startTime: '0:00',
+        endTime: '4:00',
+        timeColor: '#FF7A00',
     });
 
-    fs.writeFileSync("musicard.png", musicard);
-})()
+    fs.writeFileSync('musicard.png', musicard);
+})();
 ```
 
-***
+---
 
 ## Dynamic
 
@@ -153,26 +164,27 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ```js
 (async () => {
-    const { Dynamic } = require("musicard");
-    const fs = require("fs")
+    const { Dynamic } = require('musicard');
+    const fs = require('fs');
 
     const musicard = await Dynamic({
-        thumbnailImage: "https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj",
-        backgroundColor: "#070707",
+        thumbnailImage:
+            'https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj',
+        backgroundColor: '#070707',
         progress: 10,
-        progressColor: "#FF7A00",
-        progressBarColor: "#5F2D00",
-        name: "Burn",
-        nameColor: "#FF7A00",
-        author: "By 2WEI & Edda Hayes",
-        authorColor: "#696969"
+        progressColor: '#FF7A00',
+        progressBarColor: '#5F2D00',
+        name: 'Burn',
+        nameColor: '#FF7A00',
+        author: 'By 2WEI & Edda Hayes',
+        authorColor: '#696969',
     });
 
-    fs.writeFileSync("musicard.png", musicard);
-})()
+    fs.writeFileSync('musicard.png', musicard);
+})();
 ```
 
-***
+---
 
 ## Mini
 
@@ -180,28 +192,55 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ```js
 (async () => {
-    const { Mini } = require("musicard");
-    const fs = require("fs")
+    const { Mini } = require('musicard');
+    const fs = require('fs');
 
     const musicard = await Mini({
-        thumbnailImage: "https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj",
-        backgroundColor: "#070707",
+        thumbnailImage:
+            'https://lh3.googleusercontent.com/yavtBZZnoxaY21GSS_VIKSg0mvzu1b0r6arH8xvWVskoMaZ5ww3iDMgBNujnIWCt7MOkDsrKapSGCfc=w544-h544-l90-rj',
+        backgroundColor: '#070707',
         progress: 10,
-        progressColor: "#FF7A00",
-        progressBarColor: "#5F2D00",
-        menuColor: "#FF7A00",
-        paused: false
+        progressColor: '#FF7A00',
+        progressBarColor: '#5F2D00',
+        menuColor: '#FF7A00',
+        paused: false,
     });
 
-    fs.writeFileSync("musicard.png", musicard);
-})()
+    fs.writeFileSync('musicard.png', musicard);
+})();
+```
+
+---
+
+## Upcoming
+
+![Upcoming](https://ik.imagekit.io/unburn/Upcoming.svg)
+
+```js
+(async () => {
+    const { Upcoming } = require('musicard');
+    const fs = require('fs');
+
+    const musicard = await Upcoming({
+        thumbnailImage: 'https://img.youtube.com/vi/lmG0kY9FtRY/maxresdefault.jpg',
+        backgroundImage: fs.readFileSync('bg.png'),
+        imageDarkness: 70,
+        author: 'Testing by UG',
+        title: 'Bad Boy (feat. Luana Kiara)',
+        trackIndexBackgroundRadii: [10, 20, 30, 40, 50, 60, 70, 80, 80, 100],
+    });
+
+    fs.writeFileSync('musicard.png', musicard);
+})();
 ```
 
 # Resource
+
 Pull request to add your project here.
 
 | Riffy Music Bot | https://github.com/riffy-team/riffy-music-bot |
 | --------------- | --------------------------------------------- |
 
 # Licence
+
 [GPL](https://github.com/unburn/musicard/blob/main/LICENSE)
