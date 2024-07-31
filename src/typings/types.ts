@@ -1,4 +1,4 @@
-import type { loadImage } from '@napi-rs/canvas';
+import type { loadImage } from "@napi-rs/canvas";
 
 export type ClassicOption = {
     thumbnailImage?: string;
