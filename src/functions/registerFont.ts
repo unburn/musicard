@@ -1,13 +1,13 @@
-import { GlobalFonts } from '@napi-rs/canvas';
-import fs from 'node:fs';
-import path from 'node:path';
+import { GlobalFonts } from "@napi-rs/canvas";
+import fs from "node:fs";
+import path from "node:path";
 
 function registerFont(fontPath: string, fontName: string): void {
-    const rootFontsPath = path.join(__dirname, '../fonts', fontPath);
+    const rootFontsPath = path.join(__dirname, "../fonts", fontPath);
     if (fs.existsSync(rootFontsPath)) {
         GlobalFonts.registerFromPath(rootFontsPath, fontName);
     } else {
-        const srcFontsPath = path.join(__dirname, '../fonts', fontPath);
+        const srcFontsPath = path.join(__dirname, "../fonts", fontPath);
         if (fs.existsSync(srcFontsPath)) {
             GlobalFonts.registerFromPath(srcFontsPath, fontName);
         } else {

@@ -1,11 +1,6 @@
-export * from './typings/types.js';
-export * from './themes/classic.js';
-export * from './themes/classicpro.js';
-export * from './themes/dynamic.js';
-export * from './themes/mini.js';
-export * from './typings/types.js';
-export * from './themes/classic.js';
-export * from './themes/classicpro.js';
-export * from './themes/dynamic.js';
-export * from './themes/mini.js';
-export * from './themes/upcoming.js';
+export type * from "./typings/types.js";
+export type * from "./themes/classic.js";
+export type * from "./themes/classicpro.js";
+export type * from "./themes/dynamic.js";
+export type * from "./themes/mini.js";
+export type * from "./themes/upcoming.js";

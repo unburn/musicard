@@ -22,7 +22,9 @@
         "deploy": "npm publish",
         "deploy:beta": "npm publish --tag beta",
         "test:m": "cd tests && node index.mjs",
-        "test:c": "cd tests && node index.js"
+        "test:c": "cd tests && node index.js",
+        "lint": "biome lint --write src/",
+        "format": "biome format --write src/"
     },
     "keywords": [
         "musicard",
@@ -41,9 +43,10 @@
     "author": "flameface",
     "license": "GPL-3.0-only",
     "devDependencies": {
-        "@types/node": "^20.12.12",
-        "tsup": "^8.0.2",
-        "typescript": "^5.4.5"
+        "@biomejs/biome": "^1.8.3",
+        "@types/node": "^22.0.1",
+        "tsup": "^8.2.3",
+        "typescript": "^5.5.4"
     },
     "repository": {
         "type": "git",
@@ -53,7 +56,7 @@
         "url": "https://github.com/unburn/musicard/issues"
     },
     "dependencies": {
-        "@napi-rs/canvas": "^0.1.52",
+        "@napi-rs/canvas": "^0.1.53",
         "cropify": "latest"
     }
 }
