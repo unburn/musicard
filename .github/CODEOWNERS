@@ -1,6 +1,6 @@
 # Github Files
-/.github @unburn
+/.github @flameface @unschooledgamer
 
 # src, tests. (/fonts Aren't directly Owned Unburn)
-/src @unburn
-/tests @unburn
+/src @flameface @unschooledgamer @elitex
+/tests @flameface
