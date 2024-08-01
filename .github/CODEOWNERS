@@ -1,0 +1,6 @@
+# Github Files
+/.github @unburn
+
+# src, tests. (/fonts Aren't directly Owned Unburn)
+/src @unburn
+/tests @unburn
