@@ -1,11 +1,13 @@
-import { createCanvas, loadImage } from "@napi-rs/canvas";
+import { createCanvas, type Image, loadImage } from "@napi-rs/canvas";
 import { cropImage } from "cropify";
 
 import { generateSvg } from "../functions/generateSvg.js";
 import type { DynamicOption } from "../typings/types.js";
 
 const Dynamic = async (option: DynamicOption): Promise<Buffer> => {
-    if (!option.progress) option.progress = 10;
+    // defaulted: 0.618 to keep progress rect/circle at the start.
+    // So that calculations happen correctly.
+    if (!option.progress) option.progress = 0.618;
     if (!option.name) option.name = "Musicard";
     if (!option.author) option.author = "By Unburn";
 
@@ -25,7 +27,7 @@ const Dynamic = async (option: DynamicOption): Promise<Buffer> => {
         option.thumbnailImage = noImageSvg;
     }
 
-    let thumbnail;
+    let thumbnail: Image;
 
     try {
         thumbnail = await loadImage(
@@ -49,9 +51,7 @@ const Dynamic = async (option: DynamicOption): Promise<Buffer> => {
         );
     }
 
-    if (option.progress < 10) {
-        option.progress = 10;
-    } else if (option.progress >= 100) {
+    if (option.progress >= 100) {
         option.progress = 99.999;
     }
 

@@ -1,11 +1,13 @@
-import { createCanvas, loadImage } from "@napi-rs/canvas";
+import { createCanvas, type Image, loadImage } from "@napi-rs/canvas";
 import { cropImage } from "cropify";
 
 import { generateSvg } from "../functions/generateSvg.js";
 import type { ClassicProOption } from "../typings/types.js";
 
 const ClassicPro = async (option: ClassicProOption): Promise<Buffer> => {
-    if (!option.progress) option.progress = 10;
+    // defaulted: 3.6 to keep progress rect/circle at the start.
+    // So that calculations happen correctly.
+    if (!option.progress) option.progress = 3.6;
     if (!option.name) option.name = "Musicard";
     if (!option.author) option.author = "By Unburn";
     if (!option.startTime) option.startTime = "0:00";
@@ -28,7 +30,7 @@ const ClassicPro = async (option: ClassicProOption): Promise<Buffer> => {
         option.thumbnailImage = noImageSvg;
     }
 
-    let thumbnail;
+    let thumbnail: Image;
 
     try {
         thumbnail = await loadImage(
@@ -52,9 +54,7 @@ const ClassicPro = async (option: ClassicProOption): Promise<Buffer> => {
         );
     }
 
-    if (option.progress < 10) {
-        option.progress = 10;
-    } else if (option.progress > 100) {
+    if (option.progress > 100) {
         option.progress = 100;
     }
 
