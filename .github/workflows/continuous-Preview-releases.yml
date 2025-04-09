@@ -14,7 +14,7 @@ on:
       - '!.*'
   push: 
     paths:
-    - 'build/**'
+    - 'src/**'
     - '!tests/**'
     - '!*.md'
     - '!.*'
@@ -46,6 +46,9 @@ jobs:
 
       - name: Install pkg-pr-new & prebuild, dependencies
         run: npm install pkg-pr-new --save-dev --no-frozen-lockfile
+
+      - name: Install pkgs & run build script with tsup
+        run: npm install && npm run build
 
       - run: npx pkg-pr-new publish
 
