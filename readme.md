@@ -98,7 +98,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Classic
 
-![classic](./assets/output-classic.png)
+![classic](/assets/output-classic.png)
 
 ```js
 (async () => {
@@ -129,7 +129,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Classic Pro
 
-![classicpro](./assets/output-classicpro.png)
+![classicpro](/assets/output-classicpro.png)
 
 ```js
 (async () => {
@@ -160,7 +160,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Dynamic
 
-![dynamic](./assets/output-dynamic.png)
+![dynamic](/assets/output-dynamic.png)
 
 ```js
 (async () => {
@@ -188,7 +188,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Mini
 
-![mini](./assets/output-mini.png)
+![mini](/assets/output-mini.png)
 
 ```js
 (async () => {
@@ -214,7 +214,7 @@ Musicard is the #1 canvas library to create music cards with awesome themes.
 
 ## Upcoming
 
-![Upcoming](./assets/output-upcoming.png)
+![Upcoming](/assets/output-upcoming.png)
 
 ```js
 (async () => {
